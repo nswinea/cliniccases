@@ -11,12 +11,15 @@
 
 
 
+   <script type="text/javascript" src="lib/javascripts/jqplot/jquery.jqplot.min.js"></script>
+
 <!-- Css specific to this page -->
 
 	<link rel="stylesheet" type="text/css" href="lib/javascripts/fullcalendar/fullcalendar.css" />
 
 	<link type="text/css" href="lib/javascripts/chosen/chosen.css" rel="stylesheet"/>
 
+    <link type="text/css" href="lib/javascripts/jqplot/jquery.jqplot.css" rel="stylesheet"/>
 
 
 </head>
