@@ -9,10 +9,9 @@
 
 	<script type="text/javascript" src="lib/javascripts/chosen/chosen.jquery.min.js"></script>
 
-
-
    <script type="text/javascript" src="lib/javascripts/jqplot/jquery.jqplot.min.js"></script>
 
+   <script type="text/javascript" src="lib/javascripts/jqplot/plugins/jqplot.barRenderer.min.js"></script>
 <!-- Css specific to this page -->
 
 	<link rel="stylesheet" type="text/css" href="lib/javascripts/fullcalendar/fullcalendar.css" />
@@ -108,7 +107,7 @@
 						<p><label>Case</label>
 
 							<select name="csenote_case_id" id="cn_case" style="width:230px;" >
-							<!-- Note Chosen seems to require the inline style width -->
+							<!-- Note Chosen seems to require the  inline style width -->
 								<option value="NC">Non-Case Time</option>
 
 								<?php
