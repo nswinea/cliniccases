@@ -206,8 +206,23 @@ $(document).ready(function() {
         clearInterval(window.activitiesRefresh);
 
         target.load('lib/php/data/home_trends_load.php', function() {
-
+        var cosPoints = []; 
+        for (var i=0; i<2*Math.PI; i+=0.1){ 
+           cosPoints.push([i, Math.cos(i)]); 
+        } 
+        var plot1 = $.jqplot('home_panel', [cosPoints], {  
+            series:[{showMarker:false}],
+            axes:{
+              xaxis:{
+                label:'Angle (radians)'
+              },
+              yaxis:{
+                label:'Cosine'
+              }
+            }
+        }); 
         });
+
 
     });
 
