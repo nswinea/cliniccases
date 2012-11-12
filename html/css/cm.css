@@ -221,6 +221,13 @@ a.event_detail_delete {position:absolute;bottom:10px;font-size:.8em;color:red !i
 .ui-timepicker-div td { font-size: 90%; }
 .ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
+/* Trends styles */
+.jqplot-point-label {
+  border: 1.5px solid #aaaaaa;
+  padding: 1px 3px;
+  background-color: #eeccdd;
+}
+
 /* Cases styles */
 	/* Custom jquery ui buttons */
 

@@ -14,7 +14,7 @@ include('../html/gen_select.php');
 $id = $_POST['case_id'];
 $limit = '20';
 
-if (iet($_POST['start']))
+if (isset($_POST['start']))
 	{$start = $_POST['start'];}
 if (isset($_POST['update']))
 	{$update = $_POST['update'];}

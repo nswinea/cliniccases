@@ -12,6 +12,11 @@
    <script type="text/javascript" src="lib/javascripts/jqplot/jquery.jqplot.min.js"></script>
 
    <script type="text/javascript" src="lib/javascripts/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+
+ 	<script type="text/javascript" src="lib/javascripts/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+
+ 	<script type="text/javascript" src="lib/javascripts/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+
 <!-- Css specific to this page -->
 
 	<link rel="stylesheet" type="text/css" href="lib/javascripts/fullcalendar/fullcalendar.css" />
