@@ -6,7 +6,7 @@
     </div>
 
     <div data-role="content">   
-        <form name="login" id="login" method="post" action="includes/Login.php" data-ajax="false">
+        <form name="login" id="login" method="post" action="index.php?i=login" data-ajax="false">
             <div data-role="divcontain">
                 <label for "username">Username</label>
                 <input type="text" name="username" id="username">

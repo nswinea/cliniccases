@@ -1,11 +1,26 @@
 <?php
 session_start();
 require('../_CONFIG.php');
-require('templates/header.php');
+require('html/templates/header.php');
+require('includes/load.php');
 
-if (!isset($_SESSION['logged_in']))
+
+if (!isset($_SESSION['is_logged_in']))
 {
-    include 'templates/login.php';
+    include 'html/templates/login.php';
+}
+else
+{
+    if (isset($_GET['i']))
+    {
+        $page = load($_GET['i']);
+    }
+    else
+    {
+        $page = load('home');
+    }
+
+    include($page);
 }
 
-include 'templates/footer.php';
+include 'html/templates/footer.php';

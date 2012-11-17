@@ -49,5 +49,6 @@ $_SESSION['private_key'] = $r->private_key;
 //Create a unique session id and then write to the log
 $sess_id = md5(time());
 $_SESSION['cc_session_id'] = $sess_id;
+$_SESSION['is_logged_in'] = TRUE; 
 
-include '../templates/home.php';
+include '../html/templates/home.php';
