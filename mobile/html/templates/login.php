@@ -1,3 +1,5 @@
+<?php if ($_POST){require('includes/Login.php');}?>
+
 <div data-role="page" id="mobile_login">
 
     <div data-role="header" data-theme="b">
@@ -6,7 +8,12 @@
     </div>
 
     <div data-role="content">   
-        <form name="login" id="login" method="post" action="index.php?i=login" data-ajax="false">
+
+        <div data-role="popup" id="loginError">
+            <p>Sorry, but your login failed.  Please try again.</p>
+        </div>
+        
+        <form name="login" id="login" > 
             <div data-role="divcontain">
                 <label for "username">Username</label>
                 <input type="text" name="username" id="username">
@@ -15,7 +22,7 @@
                 <label for "password">Password</label>
                 <input type="password" name="password" id="password">
             </div>
-            <button>Login</button>
+            <button id="loginButton">Login</button>
         </form>
     </div>
 </div>

@@ -7,7 +7,7 @@ require('includes/load.php');
 
 if (!isset($_SESSION['is_logged_in']))
 {
-    include 'html/templates/login.php';
+    $page = load('login');
 }
 else
 {
@@ -20,7 +20,8 @@ else
         $page = load('home');
     }
 
-    include($page);
 }
+
+include($page);
 
 include 'html/templates/footer.php';

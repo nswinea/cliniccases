@@ -2,7 +2,7 @@
 
 session_start();
 require('../../db.php');
-include '../../lib/php/auth/pbkdf2.php';
+require('../../lib/php/auth/pbkdf2.php');
 
 
 $user = $_POST['username'];
@@ -19,12 +19,14 @@ $q->execute();
 $error = $q->errorInfo();
 
 if ($error[1]) {
-    print_r($error);die;
+    $response = array('error' => true,'message' => 'Sorry, there was a database error.' );
+    echo json_encode($response);die;
 }
 
 if ($q->rowCount() < 1) {
-    include('../templates/login_fail.php');
-    die;
+    $response = array('error' => true,'message' => 'Sorry, your username and password
+    were not recognized' );
+    echo json_encode($response);die;
 }
 
 $r = $q->fetch(PDO::FETCH_OBJ);
@@ -51,4 +53,6 @@ $sess_id = md5(time());
 $_SESSION['cc_session_id'] = $sess_id;
 $_SESSION['is_logged_in'] = TRUE; 
 
-include '../html/templates/home.php';
+//include '../html/templates/home.php';
+$response = array('error' => false, 'message' => 'Logging you in');
+echo json_encode($response);
