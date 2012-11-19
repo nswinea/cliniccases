@@ -1,5 +1,5 @@
 <?php
-include '../lib/php/auth/session_check.php';
+include 'includes/session_check.php';
 ?>
 
 <div data-role="page" id="activity">

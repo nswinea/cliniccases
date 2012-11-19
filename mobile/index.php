@@ -5,7 +5,7 @@ require('html/templates/header.php');
 require('includes/load.php');
 
 
-if (!isset($_SESSION['is_logged_in']))
+if (!isset($_SESSION['cc_mobile_id']))
 {
     $page = load('login');
 }

@@ -22,6 +22,14 @@
                 <label for "password">Password</label>
                 <input type="password" name="password" id="password">
             </div>
+
+            <div data-role="divcontain">
+                <label for="flip-1">Remember Me</label>
+                    <select name="remember" id="remember" data-role="slider">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                    </select>
+            </div>
             <button id="loginButton">Login</button>
         </form>
     </div>

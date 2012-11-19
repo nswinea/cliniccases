@@ -20,7 +20,11 @@ $(document).bind('pageinit', function () {
                 }
                 else
                 {
-                    //write to localStorage
+                    if (serverResponse.hash)
+                    {
+                        localStorage.ccmUser = serverResponse.username;
+                        localStorage.ccmHash = serverResponse.hash;
+                    }
                     //redirect
                     window.location = 'index.php?i=home';
                 }
