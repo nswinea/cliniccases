@@ -3,7 +3,7 @@ session_start();
 require('../../db.php');
 require('../../lib/php/auth/pbkdf2.php');
 
-//define variables
+//define variable --tests
 $user = $_POST['username'];
 $salt = CC_SALT;
 $hash = pbkdf2($_POST['password'], $salt, 1000, 32);
