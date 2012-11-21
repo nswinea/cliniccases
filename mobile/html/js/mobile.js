@@ -1,9 +1,8 @@
 $(document).bind('pageinit', function () {
  
- 
-    $('#loginButton').click(function(event){
+    $('#loginButton').click(function (event) {
         event.preventDefault();
-        if ($('input[name="username"]').val() == '' || $('input[name="password"]').val() == '') 
+        if ($('input[name="username"]').val() === '' || $('input[name="password"]').val() === '')
         {
             $('#loginError p').html('You must supply a username and password.');
             $('#loginError').popup('open');
@@ -33,8 +32,5 @@ $(document).bind('pageinit', function () {
         }
 
     });
- 
- 
- 
  
 });

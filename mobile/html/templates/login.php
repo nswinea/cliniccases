@@ -35,3 +35,4 @@
     </div>
 </div>
 
+<script src="html/js/autoLogin.js"> </script>
