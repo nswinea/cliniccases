@@ -4,7 +4,6 @@ require('../_CONFIG.php');
 require('html/templates/header.php');
 require('includes/load.php');
 
-
 if (!isset($_SESSION['cc_mobile_id']))
 {
     $page = load('login');
