@@ -11,7 +11,7 @@ include('includes/generate_avatar.php');
         <a href="#" class="ui-btn-right ui-btn ui-shadow ui-btn-corner-all ui-btn-icon-left ui-btn-up-b"> 
             <span class="ui-btn-inner ui-btn-corner-all">
                 <span class="ui-btn-text">
-                    <img src='<?php echo generate_avatar($dbh,$_SESSION['login']);?>'>
+                    <img src='<?php echo generate_avatar($dbh,$_SESSION['login'],'small');?>'>
                 </span>
                 <span class="ui-icon ui-icon-gear ">&nbsp;</span>
             </span>
