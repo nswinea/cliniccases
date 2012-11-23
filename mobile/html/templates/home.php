@@ -8,6 +8,7 @@ require('includes/Home.php');
     <div data-role="header" data-position="fixed" data-theme="b">
         <div class="ui-bar"><img src="../html/images/logo_small4.png"></div>
         <div class="ui-bar ui-btn-right">
+            <?php echo $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?> &nbsp
             <img src='<?php echo generate_avatar($dbh,$_SESSION['login'],true);?>'>
         </div>
         <div data-role="navbar">
@@ -44,6 +45,9 @@ require('includes/Home.php');
             </a>
             <a href="#" data-role="button" data-icon="gear" data-corners="true" data-shadow="true">
                 Settings
+            </a>
+            <a href="index.php?i=logout" data-role="button" data-icon="arrow-r" data-corners="true" data-shadow="true">
+                Logout
             </a>
         </div>
     </div>
