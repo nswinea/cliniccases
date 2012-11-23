@@ -2,3 +2,6 @@ _CONFIG.php
 people/*.jpg
 uploads/*
 *.swp
+*.vim
+*.vim!
+*.un~
