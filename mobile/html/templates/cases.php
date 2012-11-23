@@ -4,7 +4,7 @@ require('includes/Cases.php');
 include('includes/generate_avatar.php');
 ?>
 
-<div data-role="page" id="cases">
+<div data-role="page" id="cases" data-title="Cases">
 
     <div data-role="header" data-theme="b" data-position="fixed">
         <div class="ui-bar"><img src="../html/images/logo_small4.png"></div>

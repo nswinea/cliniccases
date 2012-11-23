@@ -47,7 +47,7 @@ foreach ($casenotes as $note) {
 		$by = username_to_fullname($dbh,$note['note_user']);
 	}
 
-	$thumb = generate_avatar($dbh,$note['note_user']);
+	$thumb = generate_avatar($dbh,$note['note_user'],false);
 	$action_text = " added a case note to ";
 	$casename = case_id_to_casename($dbh,$note['case_id']);
 	$time_done = $note['datestamp'];
@@ -79,7 +79,7 @@ foreach ($noncases as $noncase) {
 	$activity_type = 'non-case';
 
 	$by = 'You';
-	$thumb = generate_avatar($dbh,$noncase['username']);
+	$thumb = generate_avatar($dbh,$noncase['username'],false);
 	$action_text = " added non-case activity ";
 	$casename = '';
 	$time_done = $noncase['datestamp'];
@@ -121,7 +121,7 @@ foreach ($documents as $document) {
 		$by = username_to_fullname($dbh,$document['doc_user']);
 	}
 
-	$thumb = generate_avatar($dbh,$document['doc_user']);
+	$thumb = generate_avatar($dbh,$document['doc_user'],false);
 	$action_text = ' added a document to ';
 	$casename = case_id_to_casename($dbh,$document['case_id']);
 	$time_done = $document['date_modified'];
@@ -162,7 +162,7 @@ foreach ($opened as $open) {
 		$by = username_to_fullname($dbh,$open['opened_by']);
 	}
 
-	$thumb = generate_avatar($dbh,$open['opened_by']);
+	$thumb = generate_avatar($dbh,$open['opened_by'],false);
 	$action_text = " opened a case: ";
 	$casename = case_id_to_casename($dbh,$open['case_id']);
 	$time_done = $open['time_opened'];
@@ -202,7 +202,7 @@ foreach ($closed as $close) {
 		$by = username_to_fullname($dbh,$close['closed_by']);
 	}
 
-	$thumb = generate_avatar($dbh,$close['closed_by']);
+	$thumb = generate_avatar($dbh,$close['closed_by'],false);
 	$action_text = " closed a case: ";
 	$casename = case_id_to_casename($dbh,$close['case_id']);
 	$time_done = $close['time_closed'];
@@ -246,7 +246,7 @@ foreach ($assignments as $assign) {
 		$by = username_to_fullname($dbh,$assign['username']) . ' was ';
 	}
 
-	$thumb = generate_avatar($dbh,$assign['username']);
+	$thumb = generate_avatar($dbh,$assign['username'],false);
 	$action_text = " assigned to a case: ";
 	$casename = case_id_to_casename($dbh,$assign['case_id']);
 	$time_done = $assign['date_assigned'];
@@ -283,7 +283,7 @@ foreach ($events as $event) {
 		$by = username_to_fullname($dbh,$assign['username']);
 	}
 
-	$thumb = generate_avatar($dbh,$event['set_by']);
+	$thumb = generate_avatar($dbh,$event['set_by'],false);
 	$action_text = " created an event in ";
 	$casename = case_id_to_casename($dbh,$event['case_id']);
 	$time_done = $event['time_added'];
@@ -320,7 +320,7 @@ foreach ($ev_assigns as $e) {
 		$by = username_to_fullname($dbh,$e['username']);
 	}
 
-	$thumb = generate_avatar($dbh,$e['username']);
+	$thumb = generate_avatar($dbh,$e['username'],false);
 	$action_text = " were assigned to an event in ";
 	$casename = case_id_to_casename($dbh,$e['case_id']);
 	$time_done = $e['time_added'];
@@ -360,7 +360,7 @@ if ($_SESSION['permissions']['add_cases'] == '1' && $_SESSION['permissions']['vi
 			$by = username_to_fullname($dbh,$open['opened_by']);
 		}
 
-		$thumb = generate_avatar($dbh,$open['opened_by']);
+		$thumb = generate_avatar($dbh,$open['opened_by'],false);
 		$action_text = " opened a case: ";
 		$casename = case_id_to_casename($dbh,$open['id']);
 		$time_done = $open['time_opened'];
@@ -397,7 +397,7 @@ if ($_SESSION['permissions']['close_cases'] == '1' && $_SESSION['permissions']['
 			$by = username_to_fullname($dbh,$close['closed_by']);
 		}
 
-		$thumb = generate_avatar($dbh,$close['closed_by']);
+		$thumb = generate_avatar($dbh,$close['closed_by'],false);
 		$action_text = " closed a case: ";
 		$casename = case_id_to_casename($dbh,$close['id']);
 		$time_done = $close['time_closed'];
@@ -459,7 +459,7 @@ if ($_SESSION['permissions']['activate_users'] == '1')
 if ($_SESSION['permissions']['reads_journals'] == '1' ||
 	$_SESSION['permissions']['writes_journals'] == '1')
 {
-	$get_journals = $dbh->prepare("SELECT * FROM cm_journals WHERE date_added >= '$phpdate'
+	$get_journals = $dbh->prepare("SELECT * FROM cm_journals WHERE date_added >= '$mysqldate'
 		AND comments != '' AND (reader LIKE '$username,%' OR reader LIKE '%,$username,%' OR username LIKE '$username'");
 	//query is constructed like this so that if there is more than one reader,
 	//they get to be notified of the other reader's comments
@@ -484,7 +484,7 @@ if ($_SESSION['permissions']['reads_journals'] == '1' ||
 				{
 					$by = username_to_fullname($dbh,$d['by']);
 				}
-				$thumb = generate_avatar($dbh,$d['by']);
+				$thumb = generate_avatar($dbh,$d['by'],false);
 				$action_text = " added a comment to a journal ";
 				$time_done = $d['time'];
 				$time_formatted = extract_date_time($d['time']);
@@ -511,7 +511,7 @@ if ($_SESSION['permissions']['reads_journals'] == '1' ||
 if ($_SESSION['permissions']['reads_journals'] == '1' ||
 	$_SESSION['permissions']['writes_journals'] == '1')
 {
-	$get_journals = $dbh->prepare("SELECT * FROM cm_journals WHERE date_added >= '$phpdate'
+	$get_journals = $dbh->prepare("SELECT * FROM cm_journals WHERE date_added >= '$mysqldate'
 		AND (reader LIKE '$username,%' OR reader LIKE '%,$username,%' OR username LIKE '$username')");
 
 	$get_journals->execute();
@@ -530,7 +530,7 @@ if ($_SESSION['permissions']['reads_journals'] == '1' ||
 			{
 				$by = username_to_fullname($dbh,$j['username']);
 			}
-			$thumb = generate_avatar($dbh,$j['username']);
+			$thumb = generate_avatar($dbh,$j['username'],false);
 			$action_text = " submitted a journal ";
 			$time_done = $j['date_added'];
 			$time_formatted = extract_date_time($j['date_added']);
@@ -563,7 +563,7 @@ if ($_SESSION['permissions']['view_board'] == '1')
 	JOIN
 	(SELECT * FROM cm_board_viewers WHERE viewer IN ('$grps') GROUP BY cm_board_viewers.post_id) AS  this_user
 	ON
-	all_posts.id = this_user.post_id AND all_posts.time_added >= '$phpdate'");
+	all_posts.id = this_user.post_id AND all_posts.time_added >= '$mysqldate'");
 
 	$q->execute();
 
@@ -577,7 +577,7 @@ if ($_SESSION['permissions']['view_board'] == '1')
 		} else {
 			$by = username_to_fullname($dbh,$post['author']);
 		}
-		$thumb = generate_avatar($dbh,$post['author']);
+		$thumb = generate_avatar($dbh,$post['author'],false);
 		$action_text = " posted on your Board ";
 		$time_done = $post['time_added'];
 		$time_formatted = extract_date_time($post['time_added']);
