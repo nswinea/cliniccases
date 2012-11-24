@@ -13,7 +13,7 @@ include('includes/generate_avatar.php');
 
         <?php foreach ($cases as $c) {extract($c); 
 
-        echo "<li>" . $c['last_name'] . ", " . $c['first_name'] ."</li>";
+        echo "<li><a href='#'>" . $c['last_name'] . ", " . $c['first_name'] ."</a></li>";
         }?>
 
         </ul>

@@ -6,6 +6,11 @@ require('includes/Home.php');
 <div data-role="page" id="activity" data-title="Activity">
 
     <?php require_once('nav_head.php'); ?>
+    <div data-role="controlgroup" data-type="horizontal" data-position-"fixed" class="home_sub_nav">
+        <a href="index.html" data-role="button" data-mini="true" class="ui-btn-active">Activity</a>
+        <a href="index.html" data-role="button" data-mini="true">Upcoming</a>
+        <a href="index.html" data-role="button" data-mini="true">Trends</a>
+    </div>
     <div data-role="content">   
         <ul data-role="listview">
         <?php foreach($activities as $a){extract($a); ?>

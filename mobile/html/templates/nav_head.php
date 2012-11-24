@@ -7,7 +7,7 @@
         </div>
         <div data-role="navbar">
             <ul>
-                <li><a href="index.php?i=home" class="ui-btn-active">Activity</a></li>
+                <li><a href="index.php?i=home" class="ui-btn-active">Home</a></li>
                 <li><a href="index.php?i=cases">Cases</a></li>
                 <li><a href="index.php?i=messages">Messages</a></li>
                 <li><a href="index.php?i=board">Board</a></li>
