@@ -13,7 +13,7 @@ include('includes/generate_avatar.php');
 
         <?php foreach ($cases as $c) {extract($c); 
 
-        echo "<li><a href='index.php?i=cases_item&type=case_notes&id=" . $c['id'] . "'>" . $c['last_name'] . ", " . $c['first_name'] ."</a></li>";
+        echo "<li><a href='index.php?i=cases_item&type=sections&id=" . $c['id'] . "'>" . $c['last_name'] . ", " . $c['first_name'] ."</a></li>";
         }?>
 
         </ul>

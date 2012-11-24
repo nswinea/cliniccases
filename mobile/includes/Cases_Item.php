@@ -8,6 +8,12 @@ $type = $_GET['type'];
 //$id = '1175';
 //$type = 'case_notes';
 switch ($type) {
+    case 'sections':
+        $q = $dbh->prepare("SELECT * FROM cm WHERE id = ? ");
+        $q->bindParam(1,$id);
+        $q->execute();
+        $items = $q->fetch(PDO::FETCH_OBJ);
+        break;
     case 'case_notes':
         $q = $dbh->prepare("SELECT * FROM cm_case_notes WHERE `case_id` = ? ORDER BY `date` DESC");
         $q->bindParam(1,$id);
