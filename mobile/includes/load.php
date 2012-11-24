@@ -4,7 +4,7 @@ function load($page)
 
 	{
 		//white list of allowed include files
-		$allowed_includes = array('home','cases','messages','login','logout');
+		$allowed_includes = array('home','cases','messages','login','logout','cases_item');
 
 		//include file requested in URL
 		$requested_include = $page;
