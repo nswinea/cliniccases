@@ -1,5 +1,5 @@
 $(document).bind('pageinit', function () {
- 
+
     $('#loginButton').click(function (event) {
         event.preventDefault();
         if ($('input[name="username"]').val() === '' || $('input[name="password"]').val() === '')
@@ -27,10 +27,20 @@ $(document).bind('pageinit', function () {
                     //redirect
                     window.location = 'index.php?i=home';
                 }
-            
+
             });
         }
 
     });
- 
+
+
 });
+
+//Handle Nav
+$(document).on('pagecreate', function () {
+    $('#m_head').find('a').removeClass('ui-btn-active');
+    var path = $.mobile.path.parseUrl(window.location.href);
+    var target = 'index.php' + path.search;
+    $('#m_head').find('a[href="' + target + '"]').addClass('ui-btn-active');
+});
+
