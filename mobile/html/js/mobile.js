@@ -33,7 +33,42 @@ $(document).bind('pageinit', function () {
 
     });
 
+    //Go back in history on swipe right
+    $(document).swiperight(function () {
+        history.go(-1);
 
+    });
+
+    //Handle infinite scroll
+    if ($('.infinite').length)
+    {
+        $('.infinite').infinitescroll({
+            navSelector  : 'div.navigation',
+            // selector for the paged navigation (it will be hidden)
+
+            nextSelector : 'div.navigation a:first',
+            // selector for the NEXT link (to page 2)
+
+            itemSelector : 'ul.infinite li',
+            // selector for all items you'll retrieve
+        }, function ()
+        {
+            //Refresh list when new data added via infinite scroll
+            $('ul[data-role=listview]').listview('refresh');
+
+            //Handle search
+            $('.inf_search').keyup(function () {
+                var searchTerm = $(this).val();
+                if (searchTerm.length > 2)
+                {
+                    $('ul[data-role=listview]').load('index.php?i=cases&search=' + searchTerm + ' ul.infinite>li', function () {
+                        $('ul[data-role=listview]').listview('refresh');
+                    });
+                }
+            });
+        });
+
+    }
 });
 
 //Handle Nav

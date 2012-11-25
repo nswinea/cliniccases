@@ -9,7 +9,11 @@ include('includes/generate_avatar.php');
     <?php require_once('nav_head.php'); ?>
 
     <div data-role="content">
-        <ul data-role="listview" data-filter="true">
+        <div data-role="fieldcontain">
+            <label for="search-basic">Search:</label>
+            <input type="search" name="search" id="search-basic" class="inf_search" value="" />
+        </div>
+        <ul data-role="listview" data-filter="false" class="infinite">
 
         <?php foreach ($cases as $c) {extract($c); 
 
@@ -17,6 +21,10 @@ include('includes/generate_avatar.php');
         }?>
 
         </ul>
+    </div>
+
+    <div class="navigation">
+        <a href="index.php?i=cases&start=<?php if (isset($_GET['start'])){echo $_GET['start'] + 20;} else{echo "20";}?>">Next</a>
     </div>
 
     <?php require_once('nav_foot.php'); ?>

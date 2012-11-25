@@ -10,6 +10,7 @@
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 <script src="html/js/mobile.js"></script>
+<script src="html/js/jquery.infinitescroll.min.js"></script>
 
 
 </head>
