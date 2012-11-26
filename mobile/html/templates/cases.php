@@ -13,18 +13,31 @@ include('includes/generate_avatar.php');
             <label for="search-basic">Search:</label>
             <input type="search" name="search" id="search-basic" class="inf_search" value="" />
         </div>
-        <ul data-role="listview" data-filter="false" class="infinite">
+        <div class="inf_contain">
+            <ul data-role="listview" data-filter="false" class="infinite">
 
-        <?php foreach ($cases as $c) {extract($c); 
+            <?php foreach ($cases as $c) {extract($c); 
 
-        echo "<li><a href='index.php?i=cases_item&type=sections&id=" . $c['id'] . "'>" . $c['last_name'] . ", " . $c['first_name'] ."</a></li>";
-        }?>
+            echo "<li><a href='index.php?i=cases_item&type=sections&id=" . $c['id'] .
+            "'>" . $c['last_name'] . ", " . $c['first_name'] ."</a></li>";
+            }?>
 
-        </ul>
-    </div>
+            </ul>
+            <div class="navigation">
+                <a href="index.php?i=cases<?php 
+                    if (isset($_GET['start']))
+                    {echo "&start=" . $_GET['start'] + 20;} 
+                    else{echo "&start=20";}
 
-    <div class="navigation">
-        <a href="index.php?i=cases&start=<?php if (isset($_GET['start'])){echo $_GET['start'] + 20;} else{echo "20";}?>">Next</a>
+                    if (isset($_GET['search']))
+                    {
+                        echo "&search=" . $_GET['search'];
+                    }
+                    
+                    
+                    ?>">Next</a>
+            </div>
+        </div>
     </div>
 
     <?php require_once('nav_foot.php'); ?>
