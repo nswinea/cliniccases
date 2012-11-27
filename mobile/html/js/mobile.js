@@ -45,11 +45,12 @@ $(document).bind('pageinit', function () {
         var opts = {
             offset: 'bottom-in-view',
             onlyOnScroll: true,
-            navUrl: $('.navigation').find('a').attr('href')
+            //navUrl: $('.navigation').find('a').attr('href')
         };
 
         $('.infinite').waypoint(function () {
-            $.get(opts.navUrl, function (data) {
+            var navUrl = $('.navigation').find('a').attr('href');
+            $.get(navUrl, function (data) {
                 //console.log($(data).find('.inf_contain'));
                 var content = $(data);
                 content.find('.infinite>li').appendTo('.infinite');
