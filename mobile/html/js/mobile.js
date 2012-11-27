@@ -42,39 +42,23 @@ $(document).bind('pageinit', function () {
     //Handle infinite scroll
     if ($('.infinite').length)
     {
-        $('.infinite').mInfinite({
-            navSelector  : 'div.navigation',
-            // selector for the paged navigation (it will be hidden)
+        var opts = {
+            offset: 'bottom-in-view',
+            onlyOnScroll: true,
+            navUrl: $('.navigation').find('a').attr('href')
+        };
 
-            nextSelector : 'div.navigation a:first',
-            // selector for the NEXT link (to page 2)
-
-            itemSelector : 'ul.infinite li',
-            // selector for all items you'll retrieve
-
-            listSelector : 'ul.infinite',
-            // selector for all items you'll retrieve
-
-        }, function ()
-        {
-            //Refresh list when new data added via infinite scroll
-            $('ul[data-role=listview]').listview('refresh');
-            alert('refresh bitch');
-
-            //Handle search
-            $('.inf_search').keyup(function () {
-                var searchTerm = $(this).val();
-                if (searchTerm.length > 2)
-                {
-                    //$(window).unbind('.infscr');
-                    $('div.inf_contain').load('index.php?i=cases&search=' +
-                    searchTerm + ' div.inf_contain', function () {
-                        $('ul[data-role=listview]').listview();
-                    });
-                }
+        $('.infinite').waypoint(function () {
+            $.get(opts.navUrl, function (data) {
+                //console.log($(data).find('.inf_contain'));
+                var content = $(data);
+                content.find('.infinite>li').appendTo('.infinite');
+                $('.navigation').html(content.find('.navigation').html());
+                $('ul[data-role=listview]').listview('refresh');
+                $('.infinite').waypoint(opts);
             });
-        });
 
+        }, opts);
     }
 });
 

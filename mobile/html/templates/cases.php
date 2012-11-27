@@ -26,7 +26,7 @@ include('includes/generate_avatar.php');
             <div class="navigation">
                 <a href="index.php?i=cases<?php 
                     if (isset($_GET['start']))
-                    {echo "&start=" . $_GET['start'] + 20;} 
+                    {echo "&start=" . ($_GET['start'] + 20);} 
                     else{echo "&start=20";}
 
                     if (isset($_GET['search']))
