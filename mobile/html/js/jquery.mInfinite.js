@@ -50,7 +50,7 @@
             $(window).on('scroll', function () {
                 var yDistance = $('body').scrollTop();
                 console.log('yDistance= ' + yDistance + ' window.height= ' + $(window).height() + ' mobile.ui-content.height= ' + $.mobile.activePage.children('.ui-content').height());
-
+                console.log((yDistance + $(window).height()) + ' ' + ($.mobile.activePage.children('.ui-content').height() - 150));
                 //here you can check how far down the user is and do your AJAX call
                 if ((yDistance + $(window).height()) > ($.mobile.activePage.children('.ui-content').height() - 150)) {
                     $('<div/>').load(req + ' .inf_contain', function () {
