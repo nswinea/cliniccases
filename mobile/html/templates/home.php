@@ -13,15 +13,22 @@ require('includes/Home.php');
     </div>
     <div data-role="content">   
         <ul data-role="listview">
-        <?php foreach($activities as $a){extract($a); ?>
+        <?php 
+        if ($activities){
+        foreach($activities as $a){extract($a); ?>
             <li>
                 <img src="<?php echo $thumb;?>">
                 <h4><?php echo $by . " " . $action_text . " " . $casename;?></h4> 
                 <p><?php echo $what; ?></p>
                 <p><?php echo $time_formatted; ?></p> 
             </li>
-        <?php } ?>
+        <?php }} ?>
         </ul>
+        <?php if (!$activities){ ?>
+        <div><h3>There has been no activity in the last 30 days.</h3></div>
+        <?php } else { ?>
+        <div><h3>End of activity for the last 30 days.</h3></div>
+        <?php } ?>
     </div>
     <?php require_once('nav_foot.php'); ?>
 </div>

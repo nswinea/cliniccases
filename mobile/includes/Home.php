@@ -19,7 +19,8 @@ function sortBySubkey(&$array, $subkey, $sortType = SORT_DESC) {
 
 $username = $_SESSION['login'];
 
-$phpdate = strtotime('-60 days');
+//Only 30 days on mobile
+$phpdate = strtotime('-30 days');
 
 $mysqldate = date( 'Y-m-d H:i:s', $phpdate );
 
@@ -597,4 +598,7 @@ if ($_SESSION['permissions']['view_board'] == '1')
 
 if (!empty($activities)) {
 	sortBySubkey($activities,'time_done');
+}
+else {
+$activities = false;
 }

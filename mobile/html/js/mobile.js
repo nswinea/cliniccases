@@ -42,29 +42,34 @@ $(document).bind('pageinit', function () {
     //Handle infinite scroll
     if ($('.infinite').length)
     {
-        //Hide nav div; if no js, user can click link
-        $('.navigation').hide();
-
+        //set jquery waypoint options
         var opts = {
             offset: 'bottom-in-view',
             onlyOnScroll: true,
         };
 
-        $('.infinite').waypoint(function () {
-            var navUrl = $('.navigation').find('a').attr('href');
-            $.get(navUrl, {
-                beforeSend: function () {$.mobile.loading('show'); },
-                complete: function () {$.mobile.loading('hide'); }
-            },
-                function (data) {
-                var content = $(data);
-                content.find('.infinite>li').appendTo('.infinite');
-                $('.navigation').html(content.find('.navigation').html());
-                $('ul[data-role=listview]').listview('refresh');
-                $('.infinite').waypoint(opts);
-            });
+        var iScroll = function () {
+            $('.infinite').waypoint(function () {
+                //Hide nav div; if no js, user can click link
+                $('.navigation').hide();
 
-        }, opts);
+                var navUrl = $('.navigation').find('a').attr('href');
+                $.ajax(navUrl, {
+                    beforeSend: function () {$.mobile.loading('show'); },
+                    complete: function () {$.mobile.loading('hide'); }
+                }).done(
+                    function (data) {
+                        var content = $(data);
+                        content.find('.infinite>li').appendTo('.infinite');
+                        $('.navigation').html(content.find('.navigation').html());
+                        $('ul[data-role=listview]').listview('refresh');
+                        $('.infinite').waypoint(opts);
+                    });
+
+            }, opts);
+        };
+
+        iScroll();
     }
 
     //Handle infinite scroll on search
@@ -73,6 +78,8 @@ $(document).bind('pageinit', function () {
         $('.inf_search').keyup(function () {
             $('div.inf_contain').load('index.php?i=cases&search=' + $(this).val() + ' div.inf_contain', function () {
                 $('ul[data-role=listview]').listview();
+                iScroll();
+                $('.navigation').hide();
             });
         });
 
