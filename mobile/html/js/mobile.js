@@ -42,16 +42,21 @@ $(document).bind('pageinit', function () {
     //Handle infinite scroll
     if ($('.infinite').length)
     {
+        //Hide nav div; if no js, user can click link
+        $('.navigation').hide();
+
         var opts = {
             offset: 'bottom-in-view',
             onlyOnScroll: true,
-            //navUrl: $('.navigation').find('a').attr('href')
         };
 
         $('.infinite').waypoint(function () {
             var navUrl = $('.navigation').find('a').attr('href');
-            $.get(navUrl, function (data) {
-                //console.log($(data).find('.inf_contain'));
+            $.get(navUrl, {
+                beforeSend: function () {$.mobile.loading('show'); },
+                complete: function () {$.mobile.loading('hide'); }
+            },
+                function (data) {
                 var content = $(data);
                 content.find('.infinite>li').appendTo('.infinite');
                 $('.navigation').html(content.find('.navigation').html());
@@ -60,6 +65,22 @@ $(document).bind('pageinit', function () {
             });
 
         }, opts);
+    }
+
+    //Handle infinite scroll on search
+    if ($('.inf_search').length)
+    {
+        $('.inf_search').keyup(function () {
+            $('div.inf_contain').load('index.php?i=cases&search=' + $(this).val() + ' div.inf_contain', function () {
+                $('ul[data-role=listview]').listview();
+            });
+        });
+
+        $('.ui-input-clear').on('click', function () {
+            $('div.inf_contain').load('index.php?i=cases div.inf_contain', function () {
+                $('ul[data-role=listview]').listview();
+            });
+        });
     }
 });
 
