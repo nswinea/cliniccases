@@ -92,10 +92,16 @@ $(document).bind('pageinit', function () {
 });
 
 //Handle Nav
-$(document).on('pagecreate', function () {
+$(document).on('pageshow', function () {
     $('#m_head').find('a').removeClass('ui-btn-active');
     var path = $.mobile.path.parseUrl(window.location.href);
     var target = 'index.php' + path.search;
-    $('#m_head').find('a[href="' + target + '"]').addClass('ui-btn-active');
+    var navChoices = ['home', 'cases', 'messages', 'board', 'journals'];
+    $.each(navChoices, function (index, value) {
+        if (target.indexOf(value) !== -1)
+        {
+            $('#m_head').find('a[data-index="' + index + '"]').addClass('ui-btn-active');
+        }
+    });
 });
 

@@ -7,13 +7,13 @@
         </div>
         <div data-role="navbar">
             <ul>
-                <li><a href="index.php?i=home" class="ui-btn-active">Home</a></li>
-                <li><a href="index.php?i=cases">Cases</a></li>
-                <li><a href="index.php?i=messages">Messages</a></li>
-                <li><a href="index.php?i=board">Board</a></li>
+                <li><a href="index.php?i=home" data-index="0">Home</a></li>
+                <li><a href="index.php?i=cases" data-index="1">Cases</a></li>
+                <li><a href="index.php?i=messages" data-index="2">Messages</a></li>
+                <li><a href="index.php?i=board" data-index="3">Board</a></li>
                 <?php if ($_SESSION['permissions']['reads_journals'] == '1' ||
                 $_SESSION['permissions']['writes_journals'] == '1'){ ?>
-                <li><a href="index.php?i=journals">Journals</a></li>
+                <li><a href="index.php?i=journals" data-index="4">Journals</a></li>
                 <?php } ?>
             </ul>
         </div><!-- /navbar -->
