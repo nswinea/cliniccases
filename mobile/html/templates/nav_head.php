@@ -1,5 +1,5 @@
 
-    <div data-role="header" data-position="fixed" data-theme="b" id="m_head">
+    <div data-role="header" data-position="fixed" data-theme="b" data-id="m_head">
         <div class="ui-bar"><img src="../html/images/logo_small4.png"></div>
         <div class="ui-bar ui-btn-right">
             <?php echo $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?> &nbsp

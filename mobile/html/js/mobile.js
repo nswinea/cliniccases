@@ -92,15 +92,15 @@ $(document).bind('pageinit', function () {
 });
 
 //Handle Nav
-$(document).on('pageshow', function () {
-    $('#m_head').find('a').removeClass('ui-btn-active');
+$(document).on('pagechange', function () {
+    $('div[data-role="navbar"]').find('a.ui-btn-active').removeClass('ui-btn-active');
     var path = $.mobile.path.parseUrl(window.location.href);
     var target = 'index.php' + path.search;
     var navChoices = ['home', 'cases', 'messages', 'board', 'journals'];
     $.each(navChoices, function (index, value) {
         if (target.indexOf(value) !== -1)
         {
-            $('#m_head').find('a[data-index="' + index + '"]').addClass('ui-btn-active');
+            $('div[data-role="navbar"]').find('a[data-index="' + index + '"]').addClass('ui-btn-active');
         }
     });
 });
