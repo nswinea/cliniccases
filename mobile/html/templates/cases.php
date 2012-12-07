@@ -10,9 +10,18 @@ include('includes/generate_avatar.php');
 
     <div data-role="content">
         <?php if (!empty($cases)){ ?>
+            <!-- <div data-role="controlgroup" data-type="horizontal" class="home_sub_nav">
+                <a href="index.html" data-role="button" data-mini="true" class="ui-btn-active">Open</a>
+                <a href="index.html" data-role="button" data-mini="true">Closed</a>
+                <a href="index.html" data-role="button" data-mini="true">All</a>
+                <a href="index.html" data-role="button" data-mini="true">Recent</a>
+                </div>-->
         <div data-role="fieldcontain">
-            <label for="search-basic">Search:</label>
-            <input type="search" name="search" id="search-basic" class="inf_search" value="" />
+            <input type="search" name="search" data-id="search-basic" class="inf_search inf_search_sm" value="" />
+            <select>
+                <option>Open</option>
+                <option>Closed</option>
+            </select>
         </div>
         <div class="inf_contain">
             <ul data-role="listview" data-filter="false" class="infinite">
