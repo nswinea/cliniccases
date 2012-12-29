@@ -18,10 +18,10 @@ include('includes/generate_avatar.php');
                 </div>-->
         <div data-role="fieldcontain">
             <input type="search" name="search" data-id="search-basic" class="inf_search inf_search_sm" value="" />
-            <select>
+            <!-- <select>
                 <option>Open</option>
                 <option>Closed</option>
-            </select>
+            </select> -->
         </div>
         <div class="inf_contain">
             <ul data-role="listview" data-filter="false" class="infinite">

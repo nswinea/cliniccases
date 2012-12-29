@@ -2,6 +2,9 @@
 require('includes/session_check.php');
 require('../db.php');
 include('includes/generate_avatar.php');
+include('../lib/php/utilities/convert_case_time.php');
+include('../lib/php/utilities/convert_times.php');
+include('../lib/php/utilities/names.php');
 
 $id = $_GET['id'];
 $type = $_GET['type'];

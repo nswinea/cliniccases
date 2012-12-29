@@ -1,2 +1,12 @@
  .home_sub_nav{text-align:center}
  .inf_search_sm{width:50px; display:inline-block}
+
+/* Custom class to supress ellipses: http://stackoverflow.com/a/9254902/49359 */
+.no-ellipses,
+.no-ellipses .ui-header .ui-title, 
+.no-ellipses .ui-footer .ui-title,
+.no-ellipses .ui-btn-inner,
+.no-ellipses .ui-select .ui-btn-text,
+.no-ellipses .ui-li .ui-btn-text a.ui-link-inherit,
+.no-ellipses .ui-li-heading,
+.no-ellipses .ui-li-desc {text-overflow:ellipsis;overflow:visible;white-space:normal;}

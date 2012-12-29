@@ -57,14 +57,24 @@ switch ($type) {
             <?php require_once('nav_head.php'); ?>
 
             <div data-role="content">
-            <?php
-
-                foreach($items as $i){ ?>
-                <p><?php echo  $i->description; ?> </p>
-                <?php }; ?>
+                <ul data-role="listview">
+                <?php
+                    foreach($items as $i){ ?>
+                    <li>
+                        <img src="<?php echo generate_avatar($dbh,$i->username,false); ?>">
+                        <h3>
+                            <?php echo username_to_fullname($dbh,$i->username);?>
+                        </h3>
+                        <p class="ui-li-aside">
+                            <strong><?php echo  extract_date($i->date); ?></strong>
+                            &nbsp; &nbsp;
+                            <?php $t = convert_case_time($i->time); echo $t[0] . " " . $t[1]; ?>
+                        </p>
+                        <p class="no-ellipses"><?php echo  nl2br(htmlentities($i->description)); ?> </p>
+                    </li>
+                    <?php }; ?>
+                </ul>
             </div>
-
-            <?php require_once('nav_foot.php'); ?>
 
         </div>
     <?php break;
