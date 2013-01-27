@@ -81,6 +81,28 @@ switch ($type) {
 
     case 'case_docs': ?>
 
+        <div data-role="page" id="case_docs" data-title="Case Documents">
+
+            <?php require_once('nav_head.php'); ?>
+
+            <div data-role="content">
+                <ul data-role="listview">
+                <?php
+                    require('includes/utilities.php');
+                    foreach($items as $i){ ?>
+                    <li>
+                        <img src="<?php echo($i->local_file_name == ''? '../html/ico/folder.png' : get_document_icon($i->extension)); ?>">
+                        <h3>
+                            <?php echo urldecode($i->local_file_name == '' ? $i->folder : $i->name);?>
+                        </h3>
+                        <p class="ui-li-aside">
+                            <strong><?php echo  extract_date($i->date_modified); ?></strong>
+                        </p>
+                    </li>
+                    <?php }; ?>
+                </ul>
+            </div>
+        </div>
 
     <?php break;
 
