@@ -2,6 +2,7 @@
 session_start();
 require('../_CONFIG.php');
 require('html/templates/header.php');
+require('html/templates/panel.php');
 require('includes/load.php');
 
 if (!isset($_SESSION['cc_mobile_id']))

@@ -30,5 +30,4 @@ require('includes/Home.php');
         <div><h3>End of activity for the last 30 days.</h3></div>
         <?php } ?>
     </div>
-    <?php require_once('nav_foot.php'); ?>
 </div>
