@@ -1,14 +1,13 @@
 
-    <div data-role="panel" data-position="right" data-display="overlay" data-id="m_panel" data-theme="b">
-        <div data-role="controlgroup" data-type="horizontal" >
-            <a href="#" data-role="button" data-icon="plus" data-corners="true" data-shadow="true">
-                Quick Add
-            </a>
-            <a href="#" data-role="button" data-icon="gear" data-corners="true" data-shadow="true">
-                Settings
-            </a>
-            <a href="index.php?i=logout" data-role="button" data-icon="arrow-r" data-corners="true" data-shadow="true">
-                Logout
-            </a>
-        </div>
+    <div data-role="panel" data-position="left" data-display="overlay" id="m_panel" data-theme="b">
+        <a href="#m_header" data-rel="close" data-icon="delete" data-role="button"  data-iconpos="notext" >Close panel</a>
+        <a href="#" data-role="button" data-icon="plus" >
+            Quick Add
+        </a>
+        <a href="#" data-role="button" data-icon="gear" >
+            Settings
+        </a>
+        <a href="index.php?i=logout" data-role="button" data-icon="arrow-r" >
+            Logout
+        </a>
     </div>

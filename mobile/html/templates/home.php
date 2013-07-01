@@ -6,6 +6,7 @@ require('includes/Home.php');
 <div data-role="page" id="activity" data-title="Activity">
 
     <?php require_once('nav_head.php'); ?>
+    <?php require_once('panel.php'); ?>
     <div data-role="controlgroup" data-type="horizontal" data-position-"fixed" class="home_sub_nav">
         <a href="index.html" data-role="button" data-mini="true" class="ui-btn-active">Activity</a>
         <a href="index.html" data-role="button" data-mini="true">Upcoming</a>
