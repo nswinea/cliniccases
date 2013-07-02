@@ -10,15 +10,14 @@ include('includes/generate_avatar.php');
 
     <div data-role="content">
         <?php if (!empty($cases)){ ?>
-            <!-- <div data-role="controlgroup" data-type="horizontal" class="home_sub_nav">
-                <a href="index.html" data-role="button" data-mini="true" class="ui-btn-active">Open</a>
-                <a href="index.html" data-role="button" data-mini="true">Closed</a>
-                <a href="index.html" data-role="button" data-mini="true">All</a>
-                <a href="index.html" data-role="button" data-mini="true">Recent</a>
-                </div>-->
+        <div data-role="controlgroup" data-type="horizontal" class="home_sub_nav">
+            <a href="index.html" data-role="button" data-mini="true" class="ui-btn-active">Open</a>
+            <a href="index.html" data-role="button" data-mini="true">Closed</a>
+            <a href="index.html" data-role="button" data-mini="true">All</a>
+        </div>
         <div data-role="fieldcontain">
             <input type="search" name="search" data-id="search-basic" class="inf_search inf_search_sm" value="" />
-            <!-- <select>
+            <!--<select>
                 <option>Open</option>
                 <option>Closed</option>
             </select> -->
@@ -29,9 +28,13 @@ include('includes/generate_avatar.php');
             <?php 
             if (!empty($cases)){
                 foreach ($cases as $c) {extract($c); 
-
-                echo "<li><a href='index.php?i=cases_item&type=sections&id=" . $c['id'] .
-                "'>" . $c['last_name'] . ", " . $c['first_name'] ."</a></li>";
+                    if ($c['organization']){
+                        echo "<li><a href='index.php?i=cases_item&type=sections&id=" . $c['id'] .
+                        "'>" . $c['organization'] ."</a></li>";
+                    } else {
+                        echo "<li><a href='index.php?i=cases_item&type=sections&id=" . $c['id'] .
+                        "'>" . $c['last_name'] . ", " . $c['first_name'] ."</a></li>";
+                    }
             }}?>
             </ul>
             <div class="navigation">
