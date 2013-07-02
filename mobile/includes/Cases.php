@@ -5,7 +5,7 @@ $user = $_SESSION['login'];
 
 if (isset($_GET['start']))
 {
-    $start = $_GET['start'];
+    $start = $_GET['start'] + 20;
 }
 else
 {
@@ -26,21 +26,25 @@ if (isset($_GET['status']))
 
     if ($_GET['status'] === 'open')
     {
-        $status = "AND cm.date_close = ''";
+        $status = 'open';
+        $status_filter = "AND cm.date_close = ''";
     } 
     else if ($_GET['status'] === 'closed')
     {
-        $status = "AND cm.date_close != ''";
+        $status = 'closed';
+        $status_filter = "AND cm.date_close != ''";
     }
-    else
+    else if ($_GET['status'] === 'all')
     {
-        $status = null;
+        $status = 'all';
+        $status_filter = null;
     }
 
 }
 else
 {
-    $status = "AND cm.date_close = ''";
+    $status = 'open';
+    $status_filter = "AND cm.date_close = ''";
 } 
 
 if ($_SESSION['permissions']['view_all_cases'] == "0")
@@ -54,7 +58,7 @@ if ($_SESSION['permissions']['view_all_cases'] == "0")
         cm_case_assignees.status =  'active' 
         AND (cm.first_name LIKE '%$search%' OR cm.last_name 
         LIKE '%$search%' OR cm.organization LIKE '%$search%')
-        $status ORDER BY cm.last_name ASC LIMIT $start,20";
+        $status_filter ORDER BY cm.last_name ASC LIMIT $start,20";
     }
     else
     {
@@ -62,7 +66,7 @@ if ($_SESSION['permissions']['view_all_cases'] == "0")
         cm_case_assignees.username FROM cm, cm_case_assignees
         WHERE cm.id = cm_case_assignees.case_id AND
         cm_case_assignees.username =  :username AND
-        cm_case_assignees.status =  'active' $status ORDER BY cm.last_name ASC LIMIT $start,20";
+        cm_case_assignees.status =  'active' $status_filter ORDER BY cm.last_name ASC LIMIT $start,20";
     }
 
 }
@@ -74,14 +78,14 @@ elseif ($_SESSION['permissions']['view_all_cases'] == "1")
     {
         $sql = "SELECT * FROM cm WHERE (first_name LIKE '%$search%' OR
         last_name LIKE '%$search%' OR organization LIKE '%$search%') 
-        $status ORDER BY last_name ASC LIMIT $start, 20";
+        $status_filter ORDER BY last_name ASC LIMIT $start, 20";
     }
     else
     {
         if ($_GET['status'] === 'closed') {
-            $sql = "SELECT * FROM cm WHERE date_closed != '' ORDER BY last_name ASC LIMIT $start, 20";
+            $sql = "SELECT * FROM cm WHERE date_close != '' ORDER BY last_name ASC LIMIT $start, 20";
         } elseif ($_GET['status'] === 'open') {
-            $sql = "SELECT * FROM cm WHERE date_closed = '' ORDER BY last_name ASC LIMIT $start, 20";
+            $sql = "SELECT * FROM cm WHERE date_close = '' ORDER BY last_name ASC LIMIT $start, 20";
         } else {
             $sql = "SELECT * FROM cm ORDER BY last_name ASC LIMIT $start, 20";
         }
@@ -90,7 +94,7 @@ elseif ($_SESSION['permissions']['view_all_cases'] == "1")
 }
 else
 {
-    die('error');
+    die('Sorry, there was an error');
 }
 
 

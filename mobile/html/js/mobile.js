@@ -76,7 +76,9 @@ $(document).bind('pageinit', function () {
     if ($('.inf_search').length)
     {
         $('.inf_search').keyup(function () {
-            $('div.inf_contain').load('index.php?i=cases&search=' + $(this).val() + ' div.inf_contain', function () {
+            var statusVar = $('.case-status-chooser a.ui-btn-active').text().toLowerCase();
+            $('div.inf_contain').load('index.php?i=cases&status=' + statusVar + '&search=' +
+            $(this).val() + ' div.inf_contain', function () {
                 $('ul[data-role=listview]').listview();
                 iScroll();
                 $('.navigation').hide();
@@ -89,6 +91,7 @@ $(document).bind('pageinit', function () {
             });
         });
     }
+    
 });
 
 //Handle Nav
@@ -98,10 +101,21 @@ $(document).on('pagechange', function () {
     var target = 'index.php' + path.search;
     var navChoices = ['home', 'cases', 'messages', 'board', 'journals'];
     $.each(navChoices, function (index, value) {
-        if (target.indexOf(value) !== -1)
-        {
+        if (target.indexOf(value) !== -1) {
             $('div[data-role="navbar"]').find('a[data-index="' + index + '"]').addClass('ui-btn-active');
         }
     });
+
+    //Toggle case chooser buttons
+    $('.case-status-chooser a').removeClass('ui-btn-active');
+    if (path.search.indexOf('status=open') !== -1) {
+        $('a.status-open').addClass('ui-btn-active');
+    } else if (path.search.indexOf('status=closed') !== -1) {
+        $('a.status-closed').addClass('ui-btn-active');
+    } else if (path.search.indexOf('status=all') !== -1) {
+        $('a.status-all').addClass('ui-btn-active');
+    } else {
+        $('a.status-open').addClass('ui-btn-active');
+    }
 });
 

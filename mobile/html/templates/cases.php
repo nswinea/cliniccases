@@ -10,17 +10,13 @@ include('includes/generate_avatar.php');
 
     <div data-role="content">
         <?php if (!empty($cases)){ ?>
-        <div data-role="controlgroup" data-type="horizontal" class="home_sub_nav">
-            <a href="index.html" data-role="button" data-mini="true" class="ui-btn-active">Open</a>
-            <a href="index.html" data-role="button" data-mini="true">Closed</a>
-            <a href="index.html" data-role="button" data-mini="true">All</a>
+        <div data-role="controlgroup" data-type="horizontal" class="home_sub_nav case-status-chooser">
+            <a href="index.php?i=cases&status=open" data-role="button" data-mini="true" class="status-open">Open</a>
+            <a href="index.php?i=cases&status=closed" data-role="button" data-mini="true" class="status-closed">Closed</a>
+            <a href="index.php?i=cases&status=all" data-role="button" data-mini="true" class="status-all">All</a>
         </div>
         <div data-role="fieldcontain">
             <input type="search" name="search" data-id="search-basic" class="inf_search inf_search_sm" value="" />
-            <!--<select>
-                <option>Open</option>
-                <option>Closed</option>
-            </select> -->
         </div>
         <div class="inf_contain">
             <ul data-role="listview" data-filter="false" class="infinite">
@@ -38,17 +34,13 @@ include('includes/generate_avatar.php');
             }}?>
             </ul>
             <div class="navigation">
-                <a href="index.php?i=cases<?php 
-                    if (isset($_GET['start']))
-                    {echo "&start=" . ($_GET['start'] + 20);} 
-                    else{echo "&start=20";}
-
-                    if (isset($_GET['search']))
-                    {
-                        echo "&search=" . $_GET['search'];
+                <?php 
+                    $nav_string = "index.php?i=cases&status=$status&start=$start";
+                    if ($search) {
+                        $nav_string .= "&search=$search";
                     }
-                    
-                    ?>">Next</a>
+                ?>
+                <a href="<?php echo $nav_string; ?>">Next</a>
             </div>
             
         </div>
