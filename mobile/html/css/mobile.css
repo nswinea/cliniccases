@@ -10,3 +10,5 @@
 .no-ellipses .ui-li .ui-btn-text a.ui-link-inherit,
 .no-ellipses .ui-li-heading,
 .no-ellipses .ui-li-desc {text-overflow:ellipsis;overflow:visible;white-space:normal;}
+
+label.muted{font-weight:normal;font-size:1em;color:grey}

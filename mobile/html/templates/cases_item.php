@@ -106,6 +106,25 @@ switch ($type) {
 
     <?php break;
 
+    case 'case_data': ?>
+
+        <div data-role="page" id="case_docs" data-title="Case Documents">
+
+            <?php require_once('nav_head.php'); ?>
+
+            <div data-role="content">
+
+                <ul data-role="listview">
+                    <?php
+                    foreach ($items as $i) { ?>
+                        <li><label class="muted"><?php echo $i['display_name']; ?>:</label> <?php echo $i['value']; ?></li>
+                    <?php } ?>
+
+                </ul>
+            </div>
+        
+        </div>
+    <?php
     default:
         // code...
         break;
