@@ -1,0 +1,6 @@
+# Assigning Cases #
+
+
+**Assigning Professors to Cases**  This is done when the case is opened by the administrator.  On the new case screen, the admin will see a list of all active professors on the system.  Select the professor to whom the case is assigned.  If more than one professor is on the case, hold the shift key down and then click the desired professors.  To remove a professor, just edit the case and unselect the professor.
+
+**Assigning Students to Cases**  As of ClinicCases 6, students can only be assigned to cases by a professor.  This limitation will be addressed in ClinicCases 7.  To assign, the professor clicks on the Students tab.  The professor will see the pictures of all students assigned to him in the upper part of the screen and a list of all of his open cases in the bottom. Click and hold the case and then drag it to the picture of the student.  A message will appear at the top of the screen confirming the assignment and an email will be sent to the student to notify him of his new case.

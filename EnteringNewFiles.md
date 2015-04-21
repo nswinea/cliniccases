@@ -1,0 +1,8 @@
+### Opening a Case ###
+
+New cases must be entered by an administrator.  To enter a new case, go the Cases tab and then click on the [new case icon](https://cliniccases.com/images/new_file.png).  Note that a new case number is automatically assigned by the system.  The default format is a four digit year followed by a unique case number. As of ClinicCases 6, this format cannot be modified without changes to the source code.  Most of the fields are self-explanatory.  If you wish to assign more than one professor to a case, hold down the control (ctrl) key and then use your mouse to select the names of the assigned professors.
+
+After you enter the case, a notification is sent via email and ClinicCases message to the assigned professor(s) telling them that the case is opened.  A rudimentary conflicts check is done where the name of your the new client is checked against the names of past clients and opposing parties.  If a potential match (conflict) is found, you are immediately informed and an the information is included in the opening email and message to the professor.
+
+### Assigning Students to Cases ###
+Students are assigned to cases by professors.  Professors should click on the "Students" tab where they will see all of their students along with a list of their open cases.  To assign a case, click and hold on the case name and drag it to the picture of the student.  ClinicCases will then confirm the assignment and send an email and ClinicCases message to the student informing him/her of the assignment.  The student will then see the case in his/her Cases tab and can begin work.
